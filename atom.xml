@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2020-12-03T05:24:25.368Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>稣糖</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo博客搭建</title>
+    <link href="http://example.com/2020/12/03/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    <id>http://example.com/2020/12/03/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</id>
+    <published>2020-12-03T04:31:26.324Z</published>
+    <updated>2020-12-03T05:24:25.368Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to Myblog!</p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>你了解 Hexo 吗？ Hexo 是一个静态博客框架，基于 Node.js，将 Markdown 文章通过渲染引擎，生成一个静态网页，再结合 Git 命令（ssh），Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p><p>几个月前偶然间了解到了 Hexo 这个静态博客网站，很适合那些喜欢写作的朋友们，最重要的是它是免费的，里面有许多的博客主题模板，这些主题都是一些很牛的大佬们开发的，而且设计的主题都很棒，让我很心动，心动不如行动，于是开始整理搭建属于自己的博客。直到今天，这中间经历了许多的坎坷荆棘，我将我的博客搭建的流程分享出来，能为那些博客小石榴们提供一些帮助吧，如果有错的话，请给我留言，我会及时修改，废话不多说，直接上教程。</p><h2 id="一、博客环境搭建"><a href="#一、博客环境搭建" class="headerlink" title="一、博客环境搭建"></a>一、博客环境搭建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">本文系统环境信息：Win10 专业版，64 位（10.0 版本 18362）</span><br><span class="line"></span><br><span class="line">Node.js：12.13.0 Git：2.24.0</span><br><span class="line"></span><br><span class="line">修改配置文件要用到的软件（可选）：</span><br><span class="line"></span><br><span class="line">Visual Studio Code（适合有开发基础的程序员，非常好用）</span><br><span class="line">Sublime Text3，可免费使用，百度网盘（提取码：mh0y）</span><br><span class="line">NodePad++ 7.8.1（最新的，也可以在官网选择其他版本）</span><br></pre></td></tr></table></figure><h3 id="1-下载-Git-和-Node-js"><a href="#1-下载-Git-和-Node-js" class="headerlink" title="1. 下载 Git 和 Node.js"></a>1. 下载 Git 和 Node.js</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">首先去 Node.js 官网 下载 node.js 的安装程序，根据你电脑系统的配置信息，下载对应的安装程序，然后开始安装。</span><br><span class="line">验证安装，并测试 Node.js 是否加入环境变量，当出现Nodejs版本号，Node.js 安装大功告成。</span><br><span class="line">如果执行 node -v 报错的话，那么手动将 Node.js 的安装路径添加到环境变量中，右击点击我的电脑 -&gt; 属性 -&gt; 高级系统设置 -&gt; 环境变量，在系统变量下找到名为 path 的变量名。</span><br><span class="line">选中 path，或者双击，然后将你 node.js 的安装路径放在 path 变量值的最后面，如果添加之前 path 值最后有 英文的分号，则直接将路径添加进去即可，如果没有，先添加分号，然后点击保存，回到桌面，打开 cmd（Win+R），执行 node -v，看是否成功。</span><br></pre></td></tr></table></figure><h4 id="设置-npm-的镜像源："><a href="#设置-npm-的镜像源：" class="headerlink" title="设置 npm 的镜像源："></a>设置 npm 的镜像源：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 查看npm的配置</span><br><span class="line">npm config list</span><br><span class="line"># 默认源</span><br><span class="line">npm config set registry https:&#x2F;&#x2F;registry.npmjs.org</span><br><span class="line"># 临时改变镜像源</span><br><span class="line">npm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line"># 永久设置为淘宝镜像源</span><br><span class="line">npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line"># 另一种方式，编辑 ~&#x2F;.npmrc 加入下面内容</span><br><span class="line">registry &#x3D; https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure><p>More info: <a href="https://yafine-blog.cn/posts/4ab2.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to Myblog!&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;你了解 Hexo 吗？ Hexo 是一个静态博客框架，基于 Node.js，将 Mark</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2020/12/02/hello-world/"/>
+    <id>http://example.com/2020/12/02/hello-world/</id>
+    <published>2020-12-02T03:59:08.188Z</published>
+    <updated>2020-12-02T03:59:08.188Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
